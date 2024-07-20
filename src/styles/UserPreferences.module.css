@@ -1,0 +1,48 @@
+.preferences {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.preferences h2 {
+  margin-top: 0;
+  color: #0070f3;
+  text-align: center;
+}
+
+.preferences form {
+  display: flex;
+  flex-direction: column;
+}
+
+.preferences label {
+  margin-top: 10px;
+}
+
+.preferences input,
+.preferences select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.preferences button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.preferences button:hover {
+  background-color: #0051a2;
+}
