@@ -12,7 +12,7 @@ export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState([]);
-  const [preferences, setPreferences] = useState(null);
+  const [preferences, setPreferences] = useState({ default_city: '', temperature_unit: 'C' });
   const [token, setToken] = useState(null);
   const router = useRouter();
 
@@ -76,10 +76,14 @@ export default function Home() {
         ) : (
           <>
             <button className={styles.signOutButton} onClick={handleSignOut}>Sign out</button>
-            <UserPreferences token={token} onPreferencesChange={handlePreferencesChange} />
+            <UserPreferences 
+              token={token} 
+              onPreferencesChange={handlePreferencesChange}
+              initialPreferences={preferences}
+            />
             <SearchBar onSearch={handleSearch} />
-            {weather && <WeatherCard weather={weather} />}
-            <ForecastList forecast={forecast} />
+            {weather && <WeatherCard weather={weather} temperatureUnit={preferences.temperature_unit} />}
+            <ForecastList forecast={forecast} temperatureUnit={preferences.temperature_unit} />
           </>
         )}
       </main>

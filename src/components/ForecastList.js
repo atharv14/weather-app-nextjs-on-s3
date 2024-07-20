@@ -1,6 +1,7 @@
 import styles from '../styles/ForecastList.module.css';
+import { formatTemperature } from '../utils/temperatureConversion';
 
-export default function ForecastList({ forecast }) {
+export default function ForecastList({ forecast, temperatureUnit }) {
   if (!forecast || forecast.length === 0) return null;
 
   return (
@@ -30,7 +31,9 @@ export default function ForecastList({ forecast }) {
                 />
               )
             }
-            <p>{day.temperature ? day.temperature.toFixed(1) : 'N/A'}°C</p>
+            <p className={styles.temperature}>
+              {formatTemperature(day.temperature, temperatureUnit)}
+            </p>
             <p>{day.description}</p>
           </div>
         ))}

@@ -1,16 +1,16 @@
 import styles from '../styles/WeatherCard.module.css';
+import { formatTemperature } from '../utils/temperatureConversion';
 
-export default function WeatherCard({ weather }) {
-  console.log('Weather data in WeatherCard:', weather);
+export default function WeatherCard({ weather, temperatureUnit }) {
 
   if (!weather) {
     console.log('No weather data available');
     return null;
   }
 
-  const formatTemperature = (temp) => {
-    return typeof temp === 'number' ? temp.toFixed(1) : 'N/A';
-  };
+  // const formatTemperature = (temp) => {
+  //   return typeof temp === 'number' ? temp.toFixed(1) : 'N/A';
+  // };
 
   return (
     <div className={styles.card}>
@@ -23,7 +23,7 @@ export default function WeatherCard({ weather }) {
         />
       )}
       <p className={styles.temperature}>
-        {formatTemperature(weather.temperature)}°C
+        {formatTemperature(weather.temperature, temperatureUnit)}
       </p>
       <p>{weather.description || weather.condition || 'No description available'}</p>
       {weather.humidity !== undefined && <p>Humidity: {weather.humidity}%</p>}
